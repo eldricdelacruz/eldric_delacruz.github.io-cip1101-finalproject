@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Page</title>
+  <style>
+    /* CSS styling for the shopping page */
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #00b8e6, #00e699);
+        margin: 0;
+        padding: 0;
+      }
+  
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+  
+      h1 {
+        text-align: center;
+        color: #FFFFFF;
+      }
+  
+      .product {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+  
+      .product img {
+        max-width: 100px;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+  
+      .product-name {
+        font-weight: bold;
+        color: #006699;
+      }
+  
+      .product-price {
+        margin-top: 5px;
+        font-size: 0.8em;
+        color: #006699;
+      }
+  
+      .add-to-cart {
+        background-color: #00cc99;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+      }
+  
+      .add-to-cart:hover {
+        background-color: #009973;
+      }
+  
+      .cart {
+        margin-top: 20px;
+      }
+  
+      .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+  
+      .cart-item img {
+        max-width: 50px;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+  
+      .cart-item-name {
+        font-weight: bold;
+        color: #006699;
+      }
+  
+      .cart-item-quantity {
+        margin-right: 10px;
+      }
+  
+      .cart-item-price {
+        font-size: 0.8em;
+        color: #006699;
+      }
+  
+      .cart-total {
+        text-align: right;
+        font-weight: bold;
+        color: #006699;
+      }
+  
+      .checkout-button {
+        background-color: #006699;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+      }
+  
+      .checkout-button:hover {
+        background-color: #004466;
+      }
+  
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+  
+      .modal-content {
+        background-color: #fff;
+        margin: 20% auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 80%;
+      }
+  
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+  
+      .modal-header h2 {
+        margin: 0;
+        color: #006699;
+      }
+  
+      .modal-close {
+        background-color: #ccc;
+        color: #333;
+        border: none;
+        padding: 5px 10px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+  
+      .modal-close:hover {
+        background-color: #999;
+      }
+  
+      .modal-body {
+        margin-bottom: 20px;
+      }
+  
+      .modal-body p {
+        margin: 10px 0;
+        padding-right: 20px;
+        color: #333;
+      }
+  
+      .thank-you-message {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #006699;
+      }
+  
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+  
+      .filter-button {
+        margin-right: 10px;
+        background-color: #00cc99;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+      }
+  
+      .filter-button:hover {
+        background-color: #009973;
+      }
+	  
+	  h4 {
+		font-size: 18px;
+		color: #777777;
+		margin: 0;
+		margin-top: 10px;
+		text-align:center;
+		}
+	  footer {
+		background-color: #006699;
+		color: #fff;
+		padding: 20px;
+		text-align: center;
+		font-size: 14px;
+		margin-top: 20px;
+		}
+	header {
+      background-color: #77d4fc;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      position: relative;
+      display: flex;
+      align-items: center;
+	  display: flex;
+	  flex-direction: column;
+      text-align: center;
+    }
+	.logo {
+      height: 150px;
+      width: auto;
+      margin-right: 10px;
+    }
+	
+  </style>
+</head>
+
+	<body>
+	<header>
+		<img src="logo.png" alt="logo" class="logo">
+	</header>
+     <div class="container">  
+        <div class="filter-buttons">
+          <button class="filter-button" data-category="all">All</button>
+          <button class="filter-button" data-category="headset">Headset</button>
+          <button class="filter-button" data-category="speaker">Speaker</button>
+          <button class="filter-button" data-category="earphone">Earphone</button>
+        </div>
+    
+        <div class="products">
+          <div class="product" data-category="headset">
+            <img src="product1.jpg" alt="Product 1">
+            <div>
+              <p class="product-name">Bose Headphones</p>
+              <p class="product-description">Experience immersive sound quality with the Bose Headphones. These over-ear headphones offer exceptional audio performance and comfort.</p>
+              <p class="product-price">$10.99</p>
+              <button class="add-to-cart" data-product-id="1">Add to Cart</button>
+            </div>
+          </div>
+    
+          <div class="product" data-category="headset">
+            <img src="product5.jpg" alt="Product 5">
+            <div>
+              <p class="product-name">Sony Noise-Canceling Headphones</p>
+              <p class="product-description">Enjoy your favorite music without any distractions with the Sony Noise-Canceling Headphones. These wireless headphones provide superior noise cancellation and high-quality sound.</p>
+              <p class="product-price">$14.99</p>
+              <button class="add-to-cart" data-product-id="5">Add to Cart</button>
+            </div>
+          </div>
+    
+
+          <div class="product" data-category="speaker">
+            <img src="product2.jpg" alt="Product 2">
+            <div>
+              <p class="product-name">JBL Bluetooth Speaker</p>
+              <p class="product-description">Take your music wherever you go with the JBL Bluetooth Speaker. This portable speaker delivers powerful audio and features wireless connectivity.</p>
+              <p class="product-price">$19.99</p>
+              <button class="add-to-cart" data-product-id="2">Add to Cart</button>
+            </div>
+          </div>
+    
+          <div class="product" data-category="speaker">
+            <img src="product8.jpg" alt="Product 8">
+            <div>
+              <p class="product-name">Sonos Smart Speaker</p>
+              <p class="product-description">Experience the convenience of voice control and superior sound quality with the Sonos Smart Speaker. This Wi-Fi enabled speaker offers seamless integration with your smart home devices.</p>
+              <p class="product-price">$29.99</p>
+              <button class="add-to-cart" data-product-id="8">Add to Cart</button>
+            </div>
+          </div>
+
+     
+          <div class="product" data-category="earphone">
+            <img src="product3.jpg" alt="Product 3">
+            <div>
+              <p class="product-name">Apple AirPods</p>
+              <p class="product-description">Enjoy wireless freedom and crystal-clear audio.
+                <p class="product-price">$9.99</p>
+                <button class="add-to-cart" data-product-id="3">Add to Cart</button>
+              </div>
+            </div>
+      
+            <div class="product" data-category="earphone">
+              <img src="product7.jpg" alt="Product 7">
+              <div>
+                <p class="product-name">Samsung Galaxy Buds</p>
+                <p class="product-description">Experience true wireless freedom and powerful audio with the Samsung Galaxy Buds. These earphones feature ergonomic design and long-lasting battery life.</p>
+                <p class="product-price">$12.99</p>
+                <button class="add-to-cart" data-product-id="7">Add to Cart</button>
+              </div>
+            </div>
+
+
+    <div class="cart">
+      <h2>Cart</h2>
+      <div class="cart-items">
+        <!-- Cart items will be added dynamically using JavaScript -->
+      </div>
+      <p class="cart-total">Total: $0.00</p>
+      <button class="checkout-button">Checkout</button>
+    </div>
+
+
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Receipt</h2>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="receipt-items">
+            <!-- Receipt items will be added dynamically using JavaScript -->
+          </div>
+          <div class="receipt-details">
+            <div class="receipt-detail">
+              <span class="receipt-detail-label">Receipt ID:</span>
+              <span class="receipt-detail-value" id="receipt-id"></span>
+            </div>
+            <div class="receipt-detail">
+              <span class="receipt-detail-label">Date:</span>
+              <span class="receipt-detail-value" id="receipt-date"></span>
+            </div>
+            <div class="receipt-detail">
+              <span class="receipt-detail-label">Time:</span>
+              <span class="receipt-detail-value" id="receipt-time"></span>
+            </div>
+          </div>
+          <p class="receipt-total"></p>
+        </div>
+        <p class="thank-you-message"></p>
+      </div>
+    </div>
+  </div>
+   <footer>
+      &copy; 2023 Shop-E-ar. All rights reserved.
+    </footer>
+
+  <script>
+    // JavaScript code for adding items to the cart
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const cartTotal = document.querySelector('.cart-total');
+    const checkoutButton = document.querySelector('.checkout-button');
+    const modal = document.querySelector('.modal');
+    const modalContent = document.querySelector('.modal-content');
+    const modalCloseButton = document.querySelector('.modal-close');
+    const receiptItemsContainer = document.querySelector('.receipt-items');
+    const receiptTotal = document.querySelector('.receipt-total');
+    const thankYouMessage = document.querySelector('.thank-you-message');
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const products = document.querySelectorAll('.product');
+
+    let cartItems = {};
+    let total = 0;
+
+
+    
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', addToCart);
+    });
+
+    checkoutButton.addEventListener('click', showReceipt);
+    modalCloseButton.addEventListener('click', closeModal);
+    filterButtons.forEach(button => {
+      button.addEventListener('click', filterProducts);
+    });
+
+    function addToCart(event) {
+      const productId = event.target.dataset.productId;
+      const productName = event.target.parentNode.querySelector('.product-name').innerText;
+      const productPrice = parseFloat(event.target.parentNode.querySelector('.product-price').innerText.replace('$', ''));
+
+      if (cartItems[productId]) {
+        cartItems[productId].quantity++;
+      } else {
+        cartItems[productId] = {
+          name: productName,
+          price: productPrice,
+          quantity: 1
+        };
+      }
+
+      total += productPrice;
+
+      updateCart();
+    }
+
+    function updateCart() {
+        cartItemsContainer.innerHTML = '';
+        cartTotal.innerText = `Total: $${total.toFixed(2)}`;
+      
+        for (let itemId in cartItems) {
+          const item = cartItems[itemId];
+          const itemElement = document.createElement('div');
+          itemElement.classList.add('cart-item');
+          itemElement.innerHTML = `
+            <img src="product${itemId}.jpg" alt="${item.name}">
+            <div>
+              <p class="cart-item-name">${item.name}</p>
+              <p class="cart-item-quantity">${item.quantity}x</p>
+              <p class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+          `;
+      
+          cartItemsContainer.appendChild(itemElement);
+        }
+      }
+
+    function showReceipt() {
+      receiptItemsContainer.innerHTML = '';
+
+      for (let itemId in cartItems) {
+        const item = cartItems[itemId];
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+        itemElement.innerHTML = `
+          <img src="product${itemId}.jpg" alt="${item.name}">
+          <p class="cart-item-name">${item.name}</p>
+          <p class="cart-item-quantity">${item.quantity}x</p>
+          <p class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</p>`;
+
+        receiptItemsContainer.appendChild(itemElement);
+      }
+
+      receiptTotal.innerText = `Total: $${total.toFixed(2)}`;
+
+      const receiptId = generateReceiptId();
+      const currentDate = getCurrentDate();
+      const currentTime = getCurrentTime();
+
+      document.getElementById('receipt-id').innerText = receiptId;
+      document.getElementById('receipt-date').innerText = currentDate;
+      document.getElementById('receipt-time').innerText = currentTime;
+
+      thankYouMessage.innerText = 'Thank you for your purchase!';
+
+      modal.style.display = 'block';
+    }
+
+    function generateReceiptId() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let receiptId = '';
+        for (let i = 0; i < 8; i++) {
+          receiptId += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return receiptId;
+      }
+  
+      function getCurrentDate() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+  
+      function getCurrentTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
+      }
+  
+
+    function closeModal() {
+      modal.style.display = 'none';
+      cartItems = {};
+      total = 0;
+      updateCart();
+    }
+
+    function filterProducts(event) {
+      const selectedCategory = event.target.dataset.category;
+
+      products.forEach(product => {
+        const productCategory = product.dataset.category;
+
+        if (selectedCategory === 'all' || selectedCategory === productCategory) {
+          product.style.display = 'flex';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
